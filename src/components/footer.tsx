@@ -24,6 +24,10 @@ export default function Footer() {
       href: "https://www.linkedin.com/in/aaryan-mori-334098192/",
     },
     { label: "company", href: "https://privilon.tech/" },
+    {
+      label: "resume",
+      href: "https://drive.google.com/file/d/1Sqy7fmfdszvX7LpNp3-MiYLMSSLIXsSW/view",
+    },
     { label: "rss", href: "/rss" },
   ];
 
