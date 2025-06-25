@@ -23,6 +23,48 @@ export const metadata: Metadata = {
   icons: {
     icon: "/logo.svg",
   },
+  keywords: [
+    "Aaryan Mori",
+    "Full-Stack Engineer",
+    "React Developer",
+    "Node.js Engineer",
+    "Software Developer Portfolio",
+    "Tech Founder",
+    "Freelance Developer",
+    "JavaScript Engineer",
+    "Startup Engineer",
+    "Web Developer",
+    "Open Source Contributor",
+  ],
+  authors: [{ name: "Aaryan Mori", url: "https://aaryanmori.vercel.app/" }],
+  creator: "Aaryan Mori",
+  publisher: "Aaryan Mori",
+  openGraph: {
+    title: "Aaryan Mori | Full-Stack Engineer & Startup Builder",
+    description:
+      "Explore the work and experience of Aaryan Mori, a full-stack engineer and startup founder focused on building clean, scalable web apps.",
+    url: "https://aaryanmori.vercel.app/",
+    siteName: "Aaryan Mori Portfolio",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Aaryan Mori Portfolio Preview",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Aaryan Mori | Full-Stack Engineer & Startup Builder",
+    description:
+      "I'm Aaryan Mori, a full-stack software engineer and founder focused on building modern web experiences. Explore my portfolio.",
+    creator: "@aaryanmori", // if applicable
+    images: ["/og-image.png"],
+  },
+  metadataBase: new URL("https://aaryanmori.vercel.app/"),
 };
 
 export default function RootLayout({
