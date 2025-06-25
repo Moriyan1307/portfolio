@@ -20,6 +20,9 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 export const metadata: Metadata = {
   title: "Aaryan | Portfolio",
   description: "My personal portfolio website",
+  icons: {
+    icon: "/logo.svg",
+  },
 };
 
 export default function RootLayout({
