@@ -18,16 +18,21 @@ function ArrowIcon() {
 export default function Footer() {
   const links = [
     { label: "email", href: "mailto:aaryanmori@gmail.com" },
+    {
+      label: "resume",
+      href: "https://drive.google.com/file/d/1Sqy7fmfdszvX7LpNp3-MiYLMSSLIXsSW/view",
+    },
+    {
+      label: "portfolio",
+      href: "https://drive.google.com/file/d/1xFkb6uapphlO282XGa5yWxxl1GCVDuV8/view",
+    },
     { label: "github", href: "https://github.com/Moriyan1307" },
     {
       label: "linkedIn",
       href: "https://www.linkedin.com/in/aaryan-mori-334098192/",
     },
     { label: "company", href: "https://privilon.tech/" },
-    {
-      label: "resume",
-      href: "https://drive.google.com/file/d/1Sqy7fmfdszvX7LpNp3-MiYLMSSLIXsSW/view",
-    },
+
     { label: "rss", href: "/rss" },
   ];
 
