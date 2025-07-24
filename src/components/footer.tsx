@@ -24,7 +24,7 @@ export default function Footer() {
     },
     {
       label: "portfolio",
-      href: "https://drive.google.com/file/d/1xFkb6uapphlO282XGa5yWxxl1GCVDuV8/view",
+      href: "https://docs.google.com/document/d/116tjMGYE5H8vlAq3_m8zj_PKx_raWdxdBw6cOo4LXKQ/edit?usp=sharing",
     },
     { label: "github", href: "https://github.com/Moriyan1307" },
     {
