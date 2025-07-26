@@ -1,11 +1,49 @@
+"use client";
+
 import Link from "next/link";
+import { useState, useEffect } from "react";
+import { taglines } from "./taglines/taglines";
 
 export default function Page() {
-  // const currentTime = new Date().toLocaleTimeString("en-US", {
-  //   hour: "numeric",
-  //   minute: "2-digit",
-  //   hour12: true,
-  // });
+  const [currentTaglineIndex, setCurrentTaglineIndex] = useState(0);
+  const [currentText, setCurrentText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isWaiting, setIsWaiting] = useState(false);
+
+  useEffect(() => {
+    const currentTagline = taglines[currentTaglineIndex];
+
+    if (isWaiting) {
+      const waitTimer = setTimeout(() => {
+        setIsWaiting(false);
+        setIsDeleting(true);
+      }, 3000); // Wait 2 seconds before deleting
+      return () => clearTimeout(waitTimer);
+    }
+
+    const speed = isDeleting ? 50 : 50; // Faster deletion, slower typing
+
+    const timer = setTimeout(() => {
+      if (!isDeleting) {
+        // Typing
+        if (currentText.length < currentTagline.length) {
+          setCurrentText(currentTagline.slice(0, currentText.length + 1));
+        } else {
+          setIsWaiting(true);
+        }
+      } else {
+        // Deleting
+        if (currentText.length > 0) {
+          setCurrentText(currentText.slice(0, -1));
+        } else {
+          setIsDeleting(false);
+          setCurrentTaglineIndex((prev) => (prev + 1) % taglines.length);
+        }
+      }
+    }, speed);
+
+    return () => clearTimeout(timer);
+  }, [currentText, isDeleting, isWaiting, currentTaglineIndex, taglines]);
 
   const technologyStacks = {
     Languages: [
@@ -103,6 +141,32 @@ export default function Page() {
             >
               Get In Touch
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Typewriter Taglines Section */}
+      {/* <section className="py-2">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="h-10 flex items-center justify-center">
+            <h2 className="text-1xl md:text-3xl lg:text-1xl font-light text-foreground">
+              <span className="font-mono">
+                {currentText}
+                <span className="animate-pulse text-accent">|</span>
+              </span>
+            </h2>
+          </div>
+        </div>
+      </section> */}
+
+      {/* Typewriter Taglines Section */}
+      <section className="py-8">
+        <div className="max-w-2xl mx-auto text-center px-4">
+          <div className="inline-block px-4 py-2 rounded-xl ">
+            <p className="text-sm sm:text-base md:text-lg font-normal text-muted-foreground tracking-tight font-mono">
+              {currentText}
+              <span className="animate-pulse text-accent">|</span>
+            </p>
           </div>
         </div>
       </section>
