@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-// import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { Navbar } from "@/components/nav";
@@ -7,19 +6,10 @@ import Footer from "@/components/footer";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
-
 export const metadata: Metadata = {
-  title: "Aaryan | Portfolio",
-  description: "My personal portfolio website",
+  title: "Aaryan Mori | Software Engineer & Founder",
+  description:
+    "Full-stack software engineer and founder with 5+ years of experience architecting secure, high-performance systems. Building the future, one line of code at a time.",
   icons: {
     icon: "/logo.svg",
   },
@@ -40,9 +30,9 @@ export const metadata: Metadata = {
   creator: "Aaryan Mori",
   publisher: "Aaryan Mori",
   openGraph: {
-    title: "Aaryan Mori | Full-Stack Engineer & Startup Builder",
+    title: "Aaryan Mori | Software Engineer & Founder",
     description:
-      "Explore the work and experience of Aaryan Mori, a full-stack engineer and startup founder focused on building clean, scalable web apps.",
+      "Full-stack software engineer and founder with 5+ years of experience architecting secure, high-performance systems. Building the future, one line of code at a time.",
     url: "https://aaryanmori.vercel.app/",
     siteName: "Aaryan Mori Portfolio",
     images: [
@@ -58,10 +48,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aaryan Mori | Full-Stack Engineer & Startup Builder",
+    title: "Aaryan Mori | Software Engineer & Founder",
     description:
-      "I'm Aaryan Mori, a full-stack software engineer and founder focused on building modern web experiences. Explore my portfolio.",
-    creator: "@aaryanmori", // if applicable
+      "Full-stack software engineer and founder with 5+ years of experience architecting secure, high-performance systems.",
+    creator: "@aaryanmori",
     images: ["/og-image.png"],
   },
   metadataBase: new URL("https://aaryanmori.vercel.app/"),
@@ -73,17 +63,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
-        <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
+    <html lang="en" className="scroll-smooth">
+      <body className="antialiased bg-background text-foreground">
+        <div className="min-h-screen flex flex-col">
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <Navbar />
-            {children}
+            <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+              <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <Navbar />
+              </div>
+            </header>
+            <main className="flex-1">
+              <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                {children}
+              </div>
+            </main>
             <Footer />
             <Analytics />
             <SpeedInsights />
           </ThemeProvider>
-        </main>
+        </div>
       </body>
     </html>
   );
