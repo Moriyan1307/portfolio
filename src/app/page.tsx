@@ -98,7 +98,7 @@ export default function Page() {
               View My Journey
             </Link>
             <Link
-              href="mailto:hello@aaryanmori.com"
+              href="mailto:aaryanmori@gmail.com"
               className="px-6 py-3 border border-border text-foreground font-medium rounded-lg transition-apple hover:bg-surface"
             >
               Get In Touch
@@ -393,7 +393,7 @@ export default function Page() {
                 Explore My Journey
               </Link>
               <Link
-                href="mailto:hello@aaryanmori.com"
+                href="mailto:aaryanmori@gmail.com"
                 className="px-6 py-3 border border-accent text-accent font-medium rounded-lg transition-apple hover:bg-accent hover:text-background"
               >
                 Start a Conversation
