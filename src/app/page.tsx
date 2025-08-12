@@ -123,8 +123,8 @@ export default function Page() {
               15,000+ users with innovative solutions.
             </p>
             <div className="flex items-center space-x-4 text-sm text-secondary">
-              <span>Currently in San Francisco, CA 🇺🇸</span>
-              <span>Leading Dev at FabLab</span>
+              <span>Currently in New York City, CA 🇺🇸</span>
+              <span>Founding Engineer at Misprint</span>
             </div>
           </div>
 
