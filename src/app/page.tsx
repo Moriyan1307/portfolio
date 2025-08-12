@@ -116,15 +116,16 @@ export default function Page() {
               Hey, I&apos;m Aaryan 👋
             </h1>
             <p className="text-body max-w-3xl leading-relaxed mb-6">
-              I&apos;m a Full Stack Developer with a unique journey from
-              founding a tech company to leading development teams. Currently at
-              FabLab, I specialize in building scalable web applications and
-              have delivered 15+ projects across various domains, serving
-              15,000+ users with innovative solutions.
+              I&apos;’m a Founding Engineer at Misprint, Inc., with a unique
+              journey from founding my own tech company to leading
+              high-performing development teams. I specialize in building
+              scalable web applications and have successfully delivered 15+
+              projects across diverse domains, impacting over 15,000 users with
+              innovative solutions.
             </p>
             <div className="flex items-center space-x-4 text-sm text-secondary">
               <span>Currently in New York City, CA 🇺🇸</span>
-              <span>Founding Engineer at Misprint</span>
+              <span>Founding Engineer at Misprint, Inc</span>
             </div>
           </div>
 
