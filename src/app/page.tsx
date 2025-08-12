@@ -116,7 +116,7 @@ export default function Page() {
               Hey, I&apos;m Aaryan 👋
             </h1>
             <p className="text-body max-w-3xl leading-relaxed mb-6">
-              I&apos;’m a Founding Engineer at Misprint, Inc., with a unique
+              I&apos;’m a Founding Engineer at Misprint, Inc, with a unique
               journey from founding my own tech company to leading
               high-performing development teams. I specialize in building
               scalable web applications and have successfully delivered 15+
@@ -124,7 +124,7 @@ export default function Page() {
               innovative solutions.
             </p>
             <div className="flex items-center space-x-4 text-sm text-secondary">
-              <span>Currently in New York City, CA 🇺🇸</span>
+              <span>Currently in New York City, NY 🇺🇸</span>
               <span>Founding Engineer at Misprint, Inc</span>
             </div>
           </div>
