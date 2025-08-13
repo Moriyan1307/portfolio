@@ -4,6 +4,32 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { taglines } from "./taglines/taglines";
 
+function LiveTime() {
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="flex items-center space-x-2 px-3 py-1.5 bg-green-500/10 border border-green-500/20 rounded-full">
+      <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-lg shadow-green-500/50"></span>
+      <span className="font-mono text-sm font-medium text-green-600">
+        {time.toLocaleTimeString("en-US", {
+          hour12: false,
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+        })}
+      </span>
+    </div>
+  );
+}
+
 export default function Page() {
   const [currentTaglineIndex, setCurrentTaglineIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
@@ -116,16 +142,19 @@ export default function Page() {
               Hey, I&apos;m Aaryan 👋
             </h1>
             <p className="text-body max-w-3xl leading-relaxed mb-6">
-              I&apos;’m a Founding Engineer at Misprint, Inc, with a unique
-              journey from founding my own tech company to leading
-              high-performing development teams. I specialize in building
-              scalable web applications and have successfully delivered 15+
-              projects across diverse domains, impacting over 15,000 users with
-              innovative solutions.
+              I build things that matter. Currently, I&apos;m a Founding
+              Engineer at Misprint, we&apos;re making trading cards as liquid as
+              stocks. Before this, I founded a company, led teams, shipped 15+
+              products to 15,000+ users. Now I&apos;m focused on one thing:
+              bringing transparency to a $13 billion market that&apos;s been
+              stuck in the past. We&apos;re not just building another
+              marketplace. We&apos;re reimagining how people trade what they
+              love.
             </p>
             <div className="flex items-center space-x-4 text-sm text-secondary">
               <span>Currently in New York City, NY 🇺🇸</span>
               <span>Founding Engineer at Misprint, Inc</span>
+              <LiveTime />
             </div>
           </div>
 
