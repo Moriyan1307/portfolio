@@ -142,18 +142,17 @@ export default function Page() {
               Hey, I&apos;m Aaryan 👋
             </h1>
             <p className="text-body max-w-3xl leading-relaxed mb-6">
-              I build things that matter. Currently, I&apos;m a Founding
-              Engineer at Misprint, we&apos;re making trading cards as liquid as
-              stocks. Before this, I founded a company, led teams, shipped 15+
-              products to 15,000+ users. Now I&apos;m focused on one thing:
-              bringing transparency to a $13 billion market that&apos;s been
-              stuck in the past. We&apos;re not just building another
-              marketplace. We&apos;re reimagining how people trade what they
-              love.
+              I build things that matter. As a Founding Engineer at Misprint (YC
+              W25), I helped scale real-time trading infrastructure for
+              collectibles using Next.js and Supabase—making trading cards as
+              liquid as stocks. Before that, I founded a company, led teams, and
+              shipped 15+ full-stack products to over 15,000 users. Now, I’m
+              focused on building intelligent, transparent systems that help
+              people interact with technology more meaningfully.
             </p>
             <div className="flex items-center space-x-4 text-sm text-secondary">
-              <span>Currently in New York City, NY 🇺🇸</span>
-              <span>Founding Engineer at Misprint, Inc</span>
+              <span>📍 New York City, NY 🇺🇸</span>
+
               <LiveTime />
             </div>
           </div>
