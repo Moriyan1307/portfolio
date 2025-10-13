@@ -7,6 +7,85 @@ export default function WorkPage() {
 
   const careerJourney = [
     {
+      role: "Founding Software Engineer",
+      company: "Misprint Inc. (YC W25)",
+      period: "Aug 2025 – Oct 2025",
+      location: "New York City, NY",
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "Supabase",
+        "PostgreSQL",
+        "Edge Functions",
+        "Vercel",
+      ],
+      tags: ["Startups", "Full-Stack", "Backend", "Cloud"],
+      description:
+        "Partnered with the founding team to launch trading infrastructure for Pokemon collectibles, owning everything from schemas to edge functions.",
+      achievements: [
+        "Architected Next.js + Supabase infrastructure powering real-time Pokemon collectible pricing across millions of valuations.",
+        "Designed PostgreSQL schemas and Supabase migrations that improved query efficiency and reduced latency by 60% across pricing endpoints.",
+        "Implemented Supabase Edge Functions and background tasks to aggregate heavy data workloads and refresh pricing without blocking users.",
+        "Rebuilt the Collections module into a trading hub with live portfolio tracking, graded/ungraded valuations, and shareable monetization flows.",
+      ],
+      projects: [
+        {
+          title: "Real-Time Pricing Platform",
+          description:
+            "Streaming valuation engine for Pokemon collectibles with sub-minute freshness and historical lookups.",
+          technologies: [
+            "Next.js",
+            "Supabase",
+            "PostgreSQL",
+            "Edge Functions",
+            "TypeScript",
+          ],
+          metrics: {
+            prices: "Millions",
+            latency: "-60%",
+            freshness: "<60s",
+          },
+          challenges: [
+            "High-frequency price updates",
+            "Historical data volume",
+            "Latency-sensitive endpoints",
+          ],
+          solutions: [
+            "Edge function orchestration",
+            "Normalized Postgres schemas",
+            "Background task pipelines",
+          ],
+        },
+        {
+          title: "Collections Trading Hub",
+          description:
+            "Converted collections into a shareable marketplace with built-in valuation, monetization, and trade history.",
+          technologies: [
+            "Next.js",
+            "Supabase",
+            "PostgreSQL",
+            "TypeScript",
+            "Edge Functions",
+          ],
+          metrics: {
+            portfolios: "Live valuations",
+            coverage: "Graded + Ungraded",
+            monetization: "Shareable",
+          },
+          challenges: [
+            "Portfolio accuracy",
+            "Tradable user flows",
+            "Multi-source pricing data",
+          ],
+          solutions: [
+            "Valuation engine",
+            "Portfolio analytics",
+            "Share + monetization flows",
+          ],
+        },
+      ],
+    },
+    {
       role: "Full Stack Developer",
       company: "FabLab",
       period: "Oct 2023 – Present",
@@ -19,6 +98,7 @@ export default function WorkPage() {
         "Redux",
         "Azure",
       ],
+      tags: ["Full-Stack", "Backend", "Cloud"],
       description:
         "Leading full-stack development initiatives with focus on scalable web applications and cloud integration.",
       achievements: [
@@ -77,6 +157,7 @@ export default function WorkPage() {
       period: "Jan 2023 – Aug 2023",
       location: "Bangalore, India",
       technologies: ["TypeScript", "Next.js", "Firebase", "Redux", "Strapi"],
+      tags: ["Full-Stack", "Frontend", "Backend"],
       description:
         "Developed innovative healthcare platforms with focus on psychological assessment and content management.",
       achievements: [
@@ -144,6 +225,7 @@ export default function WorkPage() {
         "Node.js",
         "AWS",
       ],
+      tags: ["Full-Stack", "Education", "Leadership"],
       description:
         "Founded and led a strategic software development firm providing consulting services and educational programs.",
       achievements: [
@@ -202,6 +284,7 @@ export default function WorkPage() {
 
   const categories = [
     "All",
+    "Startups",
     "Full-Stack",
     "Frontend",
     "Backend",
@@ -211,24 +294,9 @@ export default function WorkPage() {
   const filteredJourney =
     selectedCategory === "All"
       ? careerJourney
-      : careerJourney.filter((role) => {
-          if (selectedCategory === "Full-Stack")
-            return role.role === "Full Stack Developer";
-          if (selectedCategory === "Frontend")
-            return role.technologies.some((tech) =>
-              ["React.js", "Next.js", "TypeScript"].includes(tech)
-            );
-          if (selectedCategory === "Backend")
-            return role.technologies.some((tech) =>
-              ["Node.js", "Express.js", "MySQL", "PostgreSQL"].includes(tech)
-            );
-          if (selectedCategory === "Cloud")
-            return role.technologies.some((tech) =>
-              ["Azure", "AWS", "Firebase"].includes(tech)
-            );
-          if (selectedCategory === "Education") return role.role === "Founder";
-          return true;
-        });
+      : careerJourney.filter((role) =>
+          role.tags ? role.tags.includes(selectedCategory) : false
+        );
 
   return (
     <div className="space-y-16">
@@ -240,8 +308,9 @@ export default function WorkPage() {
               Career Journey
             </h1>
             <p className="text-body max-w-2xl">
-              My professional evolution from founding a tech company to leading
-              full-stack development at innovative organizations.
+              From building YC-backed trading infrastructure at Misprint to
+              modernizing university platforms and leading a product studio,
+              here&apos;s the throughline of my work.
             </p>
           </div>
 
@@ -251,10 +320,10 @@ export default function WorkPage() {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-apple ${
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-apple border ${
                   selectedCategory === category
-                    ? "bg-accent text-background"
-                    : "bg-surface text-secondary hover:text-foreground hover:bg-surface-hover"
+                    ? "border-transparent bg-foreground text-background shadow-sm"
+                    : "border-border/60 text-secondary hover:text-foreground hover:border-foreground/30"
                 }`}
               >
                 {category}
@@ -269,7 +338,7 @@ export default function WorkPage() {
         <div className="max-w-6xl mx-auto">
           <div className="relative">
             {/* Timeline Line */}
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent/50 via-accent/30 to-accent/10"></div>
+            <div className="absolute left-8 top-0 bottom-0 w-px bg-border/60"></div>
 
             <div className="space-y-16">
               {filteredJourney.map((role, index) => (
@@ -279,7 +348,7 @@ export default function WorkPage() {
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
                   {/* Timeline Dot */}
-                  <div className="absolute left-6 w-4 h-4 bg-accent rounded-full border-4 border-background shadow-lg"></div>
+                  <div className="absolute left-6 w-4 h-4 rounded-full border border-border/60 bg-background"></div>
 
                   <div className="ml-16">
                     {/* Role Header */}
@@ -300,7 +369,7 @@ export default function WorkPage() {
                           {role.technologies.map((tech) => (
                             <span
                               key={tech}
-                              className="px-3 py-1 bg-surface text-secondary text-xs rounded-full border border-border/50"
+                              className="px-3 py-1 rounded-full border border-border/50 text-xs text-secondary"
                             >
                               {tech}
                             </span>
@@ -320,9 +389,9 @@ export default function WorkPage() {
                           (achievement, achievementIndex) => (
                             <div
                               key={achievementIndex}
-                              className="flex items-start space-x-3 p-4 rounded-lg bg-surface/30 border border-border/30 hover:bg-surface/50 transition-apple"
+                              className="flex items-start space-x-3 p-4 rounded-2xl border border-border/50 bg-background/70 backdrop-blur-sm hover:border-foreground/20 transition-apple"
                             >
-                              <span className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></span>
+                              <span className="mt-2 h-1.5 w-1.5 rounded-full bg-foreground flex-shrink-0"></span>
                               <p className="text-body">{achievement}</p>
                             </div>
                           )
@@ -339,20 +408,11 @@ export default function WorkPage() {
                         {role.projects.map((project, projectIndex) => (
                           <div
                             key={projectIndex}
-                            className="group p-6 rounded-xl bg-surface/50 border border-border/50 hover:bg-surface hover:border-accent/20 transition-apple"
+                            className="group p-6 rounded-2xl border border-border/50 bg-background/70 backdrop-blur-sm transition-apple hover:border-foreground/20"
                           >
-                            <div className="flex items-center justify-between mb-4">
-                              <h5 className="text-headline font-semibold text-foreground group-hover:text-accent transition-apple">
-                                {project.title}
-                              </h5>
-                              <Link
-                                href="#"
-                                className="text-secondary hover:text-accent transition-apple group-hover:scale-110"
-                                title="View Details"
-                              >
-                                →
-                              </Link>
-                            </div>
+                            <h5 className="text-headline font-semibold text-foreground mb-3">
+                              {project.title}
+                            </h5>
 
                             <p className="text-body mb-4">
                               {project.description}
@@ -362,11 +422,14 @@ export default function WorkPage() {
                             <div className="grid grid-cols-3 gap-3 mb-4">
                               {Object.entries(project.metrics).map(
                                 ([key, value]) => (
-                                  <div key={key} className="text-center">
-                                    <div className="text-sm font-bold text-accent">
+                                  <div
+                                    key={key}
+                                    className="rounded-xl border border-border/40 bg-background/80 p-3 text-center"
+                                  >
+                                    <div className="text-sm font-semibold text-foreground">
                                       {value}
                                     </div>
-                                    <div className="text-xs text-secondary capitalize">
+                                    <div className="text-xs text-secondary uppercase tracking-wide">
                                       {key}
                                     </div>
                                   </div>
@@ -380,7 +443,7 @@ export default function WorkPage() {
                                 {project.technologies.map((tech) => (
                                   <span
                                     key={tech}
-                                    className="px-2 py-1 bg-background/50 text-secondary text-xs rounded-md border border-border/30"
+                                    className="px-2.5 py-1 rounded-full border border-border/50 text-xs text-secondary"
                                   >
                                     {tech}
                                   </span>
@@ -394,13 +457,13 @@ export default function WorkPage() {
                                 <h6 className="text-xs font-medium text-foreground mb-2">
                                   Challenges
                                 </h6>
-                                <ul className="space-y-1">
+                                <ul className="space-y-1.5">
                                   {project.challenges.map((challenge) => (
                                     <li
                                       key={challenge}
                                       className="text-xs text-secondary flex items-center"
                                     >
-                                      <span className="w-1 h-1 bg-accent rounded-full mr-2" />
+                                      <span className="mr-2 h-1.5 w-1.5 rounded-full bg-foreground/80" />
                                       {challenge}
                                     </li>
                                   ))}
@@ -410,13 +473,13 @@ export default function WorkPage() {
                                 <h6 className="text-xs font-medium text-foreground mb-2">
                                   Solutions
                                 </h6>
-                                <ul className="space-y-1">
+                                <ul className="space-y-1.5">
                                   {project.solutions.map((solution) => (
                                     <li
                                       key={solution}
                                       className="text-xs text-secondary flex items-center"
                                     >
-                                      <span className="w-1 h-1 bg-accent rounded-full mr-2" />
+                                      <span className="mr-2 h-1.5 w-1.5 rounded-full bg-foreground/80" />
                                       {solution}
                                     </li>
                                   ))}
@@ -438,24 +501,24 @@ export default function WorkPage() {
       {/* Call to Action */}
       <section className="pt-16">
         <div className="max-w-3xl mx-auto text-center">
-          <div className="p-8 rounded-2xl bg-surface/50 border border-border/50 animate-fade-in-up">
+          <div className="p-8 rounded-2xl border border-border/50 bg-background/80 backdrop-blur-sm animate-fade-in-up">
             <h2 className="text-display font-semibold text-foreground mb-4">
-              Ready to Start Your Project?
+              Plan the Next Release Together
             </h2>
             <p className="text-body mb-6">
-              From founding a tech company to leading development teams, I bring
-              diverse experience and technical expertise to every project.
+              Need a founding engineer or a full-stack partner who can ship with
+              clarity? Let&apos;s talk.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="mailto:hello@aaryanmori.com"
-                className="px-6 py-3 bg-accent text-background font-medium rounded-lg transition-apple hover:bg-accent-hover hover:scale-105"
+                className="px-5 py-2.5 rounded-full bg-foreground text-background text-sm font-medium transition-apple hover:bg-foreground/90"
               >
                 Get In Touch
               </Link>
               <Link
                 href="/"
-                className="px-6 py-3 border border-accent text-accent font-medium rounded-lg transition-apple hover:bg-accent hover:text-background"
+                className="px-5 py-2.5 rounded-full border border-border/60 text-sm font-medium text-foreground transition-apple hover:border-foreground/50 hover:bg-background/70"
               >
                 Back to Home
               </Link>

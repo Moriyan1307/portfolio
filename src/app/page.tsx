@@ -16,9 +16,9 @@ function LiveTime() {
   }, []);
 
   return (
-    <div className="flex items-center space-x-2 px-3 py-1.5 bg-green-500/10 border border-green-500/20 rounded-full">
-      <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-lg shadow-green-500/50"></span>
-      <span className="font-mono text-sm font-medium text-green-600">
+    <div className="flex items-center space-x-2 px-3 py-1.5 rounded-full border border-border/60 bg-background/80 backdrop-blur-sm">
+      <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse"></span>
+      <span className="font-mono text-xs font-medium text-secondary">
         {time.toLocaleTimeString("en-US", {
           hour12: false,
           hour: "2-digit",
@@ -160,13 +160,13 @@ export default function Page() {
           <div className="flex flex-col sm:flex-row gap-4 pt-8 animate-fade-in-up stagger-1">
             <Link
               href="/work"
-              className="px-6 py-3 bg-accent text-background font-medium rounded-lg transition-apple hover:bg-accent-hover hover:scale-105"
+              className="px-5 py-2.5 rounded-full bg-foreground text-background text-sm font-medium tracking-tight transition-apple hover:bg-foreground/90"
             >
               View My Journey
             </Link>
             <Link
               href="mailto:aaryanmori@gmail.com"
-              className="px-6 py-3 border border-border text-foreground font-medium rounded-lg transition-apple hover:bg-surface"
+              className="px-5 py-2.5 rounded-full border border-border/60 text-sm font-medium text-foreground transition-apple hover:border-foreground/50 hover:bg-background/70"
             >
               Get In Touch
             </Link>
@@ -191,7 +191,7 @@ export default function Page() {
       {/* Typewriter Taglines Section */}
       <section className="py-8">
         <div className="max-w-2xl mx-auto text-center px-4">
-          <div className="inline-block px-4 py-2 rounded-xl ">
+          <div className="inline-block px-4 py-2 rounded-full border border-border/50 bg-background/70 backdrop-blur-sm">
             <p className="text-sm sm:text-base md:text-lg font-normal text-muted-foreground tracking-tight font-mono">
               {currentText}
               <span className="animate-pulse text-accent">|</span>
@@ -208,22 +208,36 @@ export default function Page() {
               Career Journey
             </h2>
             <p className="text-body max-w-2xl">
-              From founding a tech company to leading development teams,
-              here&apos;s my professional evolution.
+              From YC-backed trading infrastructure to university-scale student
+              systems, here&apos;s how I&apos;ve grown products end-to-end.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {[
+              {
+                role: "Founding Software Engineer",
+                company: "Misprint Inc. (YC W25)",
+                period: "Aug 2025 – Oct 2025",
+                location: "New York City, NY",
+                description:
+                  "Architected the trading backbone for Pokemon collectibles with Next.js, Supabase, and edge functions.",
+                highlights: [
+                  "Millions of price points",
+                  "60% faster queries",
+                  "Serverless pricing jobs",
+                ],
+                icon: "🃏",
+              },
               {
                 role: "Lead Full Stack Developer",
                 company: "FabLab",
                 period: "Oct 2023 – Present",
                 location: "Arlington, TX",
                 description:
-                  "Leading development of FabApp serving 15,000+ students with React.js, Node.js, and Azure integration.",
-                achievements: ["15K+ Users", "3X Performance", "Azure SSO"],
-                color: "from-blue-500/20 to-blue-600/20",
+                  "Scaling FabApp for 15,000+ students with React.js, Node.js, and Azure-powered auth.",
+                highlights: ["15K+ users", "3x faster", "Azure SSO"],
+                icon: "💼",
               },
               {
                 role: "Software Developer",
@@ -231,13 +245,9 @@ export default function Page() {
                 period: "Jan 2023 – Aug 2023",
                 location: "Bangalore, India",
                 description:
-                  "Built psychological assessment platforms and health blogs using Next.js, Firebase, and Strapi.",
-                achievements: [
-                  "2K+ Assessments",
-                  "35% Performance",
-                  "20+ Authors",
-                ],
-                color: "from-green-500/20 to-green-600/20",
+                  "Shipped real-time assessment and content platforms with Next.js, Firebase, and Strapi.",
+                highlights: ["2K+ assessments", "35% faster", "20+ authors"],
+                icon: "🏥",
               },
               {
                 role: "Founder",
@@ -245,20 +255,17 @@ export default function Page() {
                 period: "May 2021 – Aug 2023",
                 location: "Bangalore, India",
                 description:
-                  "Founded software development firm, delivered 15+ projects and taught 75+ students React.js.",
-                achievements: ["15+ Projects", "8+ Clients", "75+ Students"],
-                color: "from-purple-500/20 to-purple-600/20",
+                  "Ran a product studio delivering 15+ full-stack builds and teaching 75+ engineers.",
+                highlights: ["15+ builds", "8+ clients", "75+ students"],
+                icon: "🚀",
               },
-            ].map((role, index) => (
+            ].map((role) => (
               <div
                 key={role.company}
-                className="group p-6 rounded-xl bg-surface/50 border border-border/50 transition-apple hover:bg-surface hover:border-accent/20 animate-fade-in-up"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="group p-6 rounded-2xl border border-border/50 bg-background/70 backdrop-blur-sm transition-apple hover:border-foreground/25 hover:-translate-y-1 animate-fade-in-up"
               >
-                <div
-                  className={`w-12 h-12 rounded-lg bg-gradient-to-br ${role.color} mb-4 flex items-center justify-center text-2xl`}
-                >
-                  {index === 0 ? "💼" : index === 1 ? "🏥" : "🚀"}
+                <div className="w-10 h-10 rounded-full border border-border/50 flex items-center justify-center text-xl mb-4">
+                  {role.icon}
                 </div>
                 <h3 className="text-headline font-semibold text-foreground mb-2">
                   {role.role}
@@ -266,17 +273,17 @@ export default function Page() {
                 <h4 className="text-lg font-medium text-accent mb-1">
                   {role.company}
                 </h4>
-                <p className="text-sm text-secondary mb-3">
+                <p className="text-xs text-secondary uppercase tracking-wide mb-3">
                   {role.period} • {role.location}
                 </p>
                 <p className="text-body mb-4">{role.description}</p>
                 <div className="flex flex-wrap gap-2">
-                  {role.achievements.map((achievement) => (
+                  {role.highlights.map((highlight) => (
                     <span
-                      key={achievement}
-                      className="px-2 py-1 bg-accent/10 text-accent text-xs rounded-full"
+                      key={highlight}
+                      className="px-2.5 py-1 rounded-full border border-border/40 text-xs font-medium text-secondary group-hover:text-foreground"
                     >
-                      {achievement}
+                      {highlight}
                     </span>
                   ))}
                 </div>
@@ -287,7 +294,7 @@ export default function Page() {
           <div className="text-center mt-12">
             <Link
               href="/work"
-              className="inline-flex items-center space-x-2 px-6 py-3 border border-accent text-accent font-medium rounded-lg transition-apple hover:bg-accent hover:text-background"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border/60 text-sm font-medium text-foreground transition-apple hover:border-foreground/40"
             >
               <span>View Full Journey</span>
               <span>→</span>
@@ -314,7 +321,7 @@ export default function Page() {
               ([category, technologies], categoryIndex) => (
                 <div
                   key={category}
-                  className="p-6 rounded-xl bg-surface/50 border border-border/50 transition-apple hover:bg-surface hover:border-accent/20 animate-fade-in-up"
+                  className="p-6 rounded-2xl border border-border/50 bg-background/70 backdrop-blur-sm transition-apple hover:border-foreground/20 animate-fade-in-up"
                   style={{ animationDelay: `${categoryIndex * 0.1}s` }}
                 >
                   <h3 className="text-headline font-semibold text-foreground mb-4">
@@ -324,7 +331,7 @@ export default function Page() {
                     {technologies.map((tech, techIndex) => (
                       <div
                         key={tech.name}
-                        className="flex items-center justify-between p-3 rounded-lg bg-background/50 border border-border/30 hover:border-accent/30 transition-all duration-200 hover:scale-105"
+                        className="flex items-center justify-between p-3 rounded-xl border border-border/40 bg-background/80 transition-all duration-200 hover:border-foreground/30 hover:-translate-y-0.5"
                         style={{
                           animationDelay: `${
                             categoryIndex * 0.1 + techIndex * 0.05
@@ -397,10 +404,10 @@ export default function Page() {
             ].map((skill, index) => (
               <div
                 key={skill.title}
-                className="group p-6 rounded-xl bg-surface/50 border border-border/50 transition-apple hover:bg-surface hover:border-accent/20 animate-fade-in-up"
+                className="group p-6 rounded-2xl border border-border/50 bg-background/70 backdrop-blur-sm transition-apple hover:border-foreground/20 animate-fade-in-up"
                 style={{ animationDelay: `${(index + 1) * 0.1}s` }}
               >
-                <div className="text-3xl mb-4 group-hover:scale-110 transition-apple">
+                <div className="text-3xl mb-4 transition-apple group-hover:-translate-y-1">
                   {skill.icon}
                 </div>
                 <h3 className="text-headline font-semibold text-foreground mb-3">
@@ -427,31 +434,37 @@ export default function Page() {
           <div className="space-y-8">
             {[
               {
+                title: "Real-time Collectible Pricing Rails",
+                description:
+                  "Misprint Inc. (YC W25): engineered the Next.js + Supabase stack that keeps millions of Pokemon card valuations fresh with edge-driven pricing jobs.",
+                year: "2025",
+              },
+              {
                 title: "15,000+ Students Served",
                 description:
-                  "Developed FabApp management system for University of Texas at Arlington, successfully migrating from PHP to React.js with 3X performance improvement.",
+                  "FabLab: re-platformed FabApp from PHP to React.js/Node.js, tripling performance and unifying Azure-backed auth.",
                 year: "2023-2025",
               },
               {
                 title: "2,000+ Assessments Completed",
                 description:
-                  "Built psychological assessment platform at HealthTick with real-time processing and instant feedback capabilities.",
+                  "HealthTick: launched a real-time psychological assessment platform with Next.js and Firebase for instant reporting.",
                 year: "2023",
               },
               {
-                title: "15+ Projects Delivered",
+                title: "15+ Products Delivered",
                 description:
-                  "Founded Privilon Technologies and delivered diverse web applications across multiple domains, increasing client efficiency by 40%.",
+                  "Privilon Technologies: led a product studio delivering 15+ full-stack builds and mentoring 75+ engineers.",
                 year: "2021-2024",
               },
             ].map((experience, index) => (
               <div
                 key={experience.title}
-                className="flex flex-col md:flex-row gap-6 items-start p-6 rounded-xl bg-surface/30 border border-border/30 transition-apple hover:bg-surface/50 hover:border-accent/20 animate-fade-in-up"
+                className="flex flex-col md:flex-row gap-6 items-start p-6 rounded-2xl border border-border/50 bg-background/70 backdrop-blur-sm transition-apple hover:border-foreground/20 animate-fade-in-up"
                 style={{ animationDelay: `${(index + 1) * 0.15}s` }}
               >
                 <div className="flex-shrink-0">
-                  <span className="inline-block px-3 py-1 bg-accent/10 text-accent font-medium rounded-full text-sm">
+                  <span className="inline-block px-3 py-1 rounded-full border border-border/50 text-xs font-medium uppercase tracking-wide text-secondary">
                     {experience.year}
                   </span>
                 </div>
@@ -470,24 +483,25 @@ export default function Page() {
       {/* Call to Action - More minimal */}
       <section className="py-16">
         <div className="max-w-3xl mx-auto text-center">
-          <div className="p-8 rounded-2xl bg-surface/50 border border-border/50 animate-fade-in-up">
+          <div className="p-8 rounded-2xl border border-border/50 bg-background/80 backdrop-blur-sm animate-fade-in-up">
             <h2 className="text-display font-semibold text-foreground mb-4">
-              Let&apos;s Build Something Amazing
+              Let&apos;s Build Calm, Modern Systems
             </h2>
             <p className="text-body mb-6 max-w-2xl mx-auto">
-              From founding a tech company to leading development teams, I bring
-              diverse experience and technical expertise to every project.
+              Whether it&apos;s real-time trading rails or a full-stack product
+              refresh, I help teams ship faster with lean, data-fluent
+              architecture.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/work"
-                className="px-6 py-3 bg-accent text-background font-medium rounded-lg transition-apple hover:bg-accent-hover hover:scale-105"
+                className="px-5 py-2.5 rounded-full bg-foreground text-background text-sm font-medium transition-apple hover:bg-foreground/90"
               >
                 Explore My Journey
               </Link>
               <Link
                 href="mailto:aaryanmori@gmail.com"
-                className="px-6 py-3 border border-accent text-accent font-medium rounded-lg transition-apple hover:bg-accent hover:text-background"
+                className="px-5 py-2.5 rounded-full border border-border/60 text-sm font-medium text-foreground transition-apple hover:border-foreground/50 hover:bg-background/70"
               >
                 Start a Conversation
               </Link>
