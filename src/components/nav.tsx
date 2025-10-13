@@ -19,7 +19,7 @@ const connectLinks = [
   { label: "Email", href: "mailto:aaryanmori@gmail.com", icon: "✉️" },
   {
     label: "Resume",
-    href: "https://drive.google.com/file/d/1Sqy7fmfdszvX7LpNp3-MiYLMSSLIXsSW/view",
+    href: "https://drive.google.com/file/d/1DA33d0jJJq3F6mWG9zhgxn731DYb-Yov/view?usp=sharing",
     icon: "📄",
   },
   {
