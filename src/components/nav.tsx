@@ -3,101 +3,94 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 
-const navItems = {
-  "/": {
-    name: "Home",
-  },
-  "/work": {
-    name: "Career",
-  },
-  "/blog": {
-    name: "Blog",
-  },
-};
+const navItems = [
+  { href: "/", label: "Home" },
+  { href: "/work", label: "Work" },
+  { href: "/blog", label: "Notes" },
+];
 
 const connectLinks = [
-  { label: "Email", href: "mailto:aaryanmori@gmail.com", icon: "✉️" },
   {
-    label: "Resume",
-    href: "https://drive.google.com/file/d/1DA33d0jJJq3F6mWG9zhgxn731DYb-Yov/view?usp=sharing",
-    icon: "📄",
+    label: "GitHub",
+    href: "https://github.com/Moriyan1307",
   },
-  {
-    label: "Portfolio",
-    href: "https://docs.google.com/document/d/116tjMGYE5H8vlAq3_m8zj_PKx_raWdxdBw6cOo4LXKQ/edit?usp=sharing",
-    icon: "🎨",
-  },
-  { label: "GitHub", href: "https://github.com/Moriyan1307", icon: "🐙" },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/aaryan-mori-334098192/",
-    icon: "💼",
   },
-  { label: "privilon.tech", href: "https://privilon.tech/", icon: "🏢" },
+  {
+    label: "Resume",
+    href: "https://drive.google.com/file/d/1DA33d0jJJq3F6mWG9zhgxn731DYb-Yov/view?usp=sharing",
+  },
 ];
 
 export function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="flex items-center justify-between py-6">
-      {/* Logo */}
-      <Link
-        href="/"
-        className="flex items-center space-x-3 transition-apple hover:opacity-80"
-        aria-label="Home"
-      >
-        <div className="w-8 h-8 flex items-center justify-center">
-          <Image
-            src="/logo.svg"
-            alt="Aaryan Mori Logo"
-            width={32}
-            height={32}
-            className="w-full h-full object-contain"
-          />
+    <nav className="pointer-events-auto rounded-[24px] border border-border/70 bg-surface/90 px-5 py-3 shadow-[0_18px_45px_rgba(15,15,25,0.12)] backdrop-blur-xl transition-apple">
+      <div className="flex items-center gap-6">
+        <Link
+          href="/"
+          className="flex items-center gap-3 text-sm font-medium tracking-tight text-foreground transition-apple hover:opacity-80"
+          aria-label="Home"
+        >
+          <div className="w-9 h-9 rounded-[12px] border border-border flex items-center justify-center bg-background">
+            <Image
+              src="/logo.svg"
+              alt="Aaryan Mori Logo"
+              width={28}
+              height={28}
+              className="w-6 h-6 object-contain"
+            />
+          </div>
+          <span>Aaryan Mori</span>
+        </Link>
+        <div className="hidden md:flex items-center gap-2 rounded-[12px] bg-background/60 px-3 py-1 text-xs font-medium uppercase tracking-[0.4em] text-secondary">
+          <span>Shipping · Early teams</span>
         </div>
-        <span className="font-semibold text-lg text-foreground">
-          Aaryan Mori
-        </span>
-      </Link>
 
-      {/* Connect Links - Centered */}
-      <div className="hidden md:flex items-center space-x-6">
-        {connectLinks.map((link) => (
+        <div className="hidden md:flex flex-1 items-center justify-center gap-3">
+          {navItems.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`relative text-sm font-medium transition-apple ${
+                  isActive ? "text-foreground" : "text-secondary hover:text-foreground"
+                }`}
+              >
+                {item.label}
+                {isActive && (
+                  <span className="absolute -bottom-1 left-1/2 h-0.5 w-4 -translate-x-1/2 rounded bg-foreground animate-scale-in" />
+                )}
+              </Link>
+            );
+          })}
+        </div>
+
+        <div className="ml-auto flex items-center gap-3">
+          <div className="hidden sm:flex items-center gap-2">
+            {connectLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 rounded-[12px] border border-border text-xs font-medium tracking-[0.15em] uppercase text-secondary transition-apple hover:text-foreground hover:border-foreground"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
           <Link
-            key={link.label}
-            href={link.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center space-x-2 px-3 py-2 rounded-lg text-secondary hover:text-foreground hover:bg-surface transition-apple group"
+            href="mailto:aaryanmori@gmail.com"
+            className="inline-flex items-center rounded-[12px] bg-foreground px-4 py-2 text-sm font-medium text-background transition-apple hover:bg-foreground/80"
           >
-            <span className="text-sm group-hover:scale-110 transition-apple">
-              {link.icon}
-            </span>
-            <span className="text-sm font-medium">{link.label}</span>
+            Send note
           </Link>
-        ))}
-      </div>
-
-      {/* Navigation Items */}
-      <div className="flex items-center space-x-8">
-        {Object.entries(navItems).map(([path, item]) => {
-          const isActive = pathname === path;
-          return (
-            <Link
-              key={path}
-              href={path}
-              className={`relative text-sm font-medium transition-apple hover:text-accent ${
-                isActive ? "text-accent" : "text-secondary"
-              }`}
-            >
-              {item.name}
-              {isActive && (
-                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-accent rounded-full animate-scale-in" />
-              )}
-            </Link>
-          );
-        })}
+        </div>
       </div>
     </nav>
   );

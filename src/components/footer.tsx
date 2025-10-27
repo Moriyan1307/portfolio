@@ -2,49 +2,64 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="border-t border-border/40 bg-surface/20 mt-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-8 md:space-y-0">
-          <div className="space-y-4">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 flex items-center justify-center">
-                <Image
-                  src="/logo.svg"
-                  alt="Aaryan Mori Logo"
-                  width={32}
-                  height={32}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <span className="font-semibold text-lg text-foreground">
-                Aaryan Mori
-              </span>
+    <footer className="border-t border-border/50 py-16">
+      <div className="page-shell space-y-12">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex items-center gap-4">
+            <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center">
+              <Image
+                src="/logo.svg"
+                alt="Aaryan Mori Logo"
+                width={28}
+                height={28}
+                className="w-7 h-7 object-contain"
+              />
             </div>
-            <p className="text-body max-w-md">
-              Building the future, one line of code at a time.
-            </p>
+            <div>
+              <p className="text-sm uppercase tracking-[0.4em] text-secondary">
+                Aaryan Mori
+              </p>
+              <p className="text-body">
+                Building calm, measurable systems for ambitious teams.
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-3 text-sm text-secondary">
+            {[
+              { href: "mailto:aaryanmori@gmail.com", label: "Email" },
+              { href: "https://github.com/Moriyan1307", label: "GitHub" },
+              {
+                href: "https://www.linkedin.com/in/aaryan-mori-334098192/",
+                label: "LinkedIn",
+              },
+              {
+                href: "https://drive.google.com/file/d/1DA33d0jJJq3F6mWG9zhgxn731DYb-Yov/view?usp=sharing",
+                label: "Resume",
+              },
+            ].map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                className="pill border-border/60 text-secondary hover:text-foreground hover:border-foreground"
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
         </div>
 
-        <div className="border-t border-border/40 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <p className="text-secondary text-sm">
-            © {new Date().getFullYear()} Aaryan Mori. All rights reserved.
-          </p>
-          <div className="flex items-center space-x-6 text-sm text-secondary">
-            <Link
-              href="/privacy"
-              className="hover:text-foreground transition-apple"
-            >
+        <div className="flex flex-col gap-4 text-sm text-secondary md:flex-row md:items-center md:justify-between">
+          <p>© {year} Aaryan Mori. MIT License.</p>
+          <div className="flex gap-6">
+            <Link href="/privacy" className="hover:text-foreground transition-apple">
               Privacy
             </Link>
-            <Link
-              href="/terms"
-              className="hover:text-foreground transition-apple"
-            >
+            <Link href="/terms" className="hover:text-foreground transition-apple">
               Terms
             </Link>
-            <span>MIT Licensed</span>
           </div>
         </div>
       </div>

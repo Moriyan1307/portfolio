@@ -67,17 +67,15 @@ export default function RootLayout({
       <body className="antialiased bg-background text-foreground">
         <div className="min-h-screen flex flex-col">
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-              <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <header className="pointer-events-none fixed inset-x-0 top-0 z-50">
+              <div className="page-shell pt-6">
                 <Navbar />
               </div>
             </header>
-            <main className="flex-1">
-              <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                {children}
-              </div>
-            </main>
-            <Footer />
+            <main className="flex-1 pt-32">{children}</main>
+            <div className="mt-16">
+              <Footer />
+            </div>
             <Analytics />
             <SpeedInsights />
           </ThemeProvider>
