@@ -299,6 +299,21 @@ Fix these during the redesign; flag before relying on them.
   Other 3 directions (Signal, Quiet, Dossier) remain at `/redesign` for reference. Next: build into real routes (V3).
 
 ### Update log (newest first)
+- **2026-07-15 (QUIET-DARK PROMOTED TO MAIN)** — The quiet-dark design IS the site now. `src/app/page.tsx`
+  is a single self-contained page: theme system (dark default, light via sun/moon header toggle, system
+  preference first, localStorage override, `data-theme` vars `--qd-*`), 2s logo intro (plays once per
+  session via sessionStorage, click/key skips, reduced-motion skips), sticky header (inline logo.svg,
+  Journey/Contact/GitHub links with underline-draw hovers, hides on scroll down), film grain + cursor
+  lamp (the only background effects), staggered section reveals, typewriter + live clock signatures,
+  and a new footer in the same language (logo, Email/GitHub/LinkedIn/Resume, © year, NYC + clock;
+  Privacy/Terms 404 links and the false MIT claim are gone). Layout stripped to metadata + analytics
+  (Navbar, Footer, next-themes ThemeProvider all removed). DELETED: `src/app/redesign/` (all
+  prototypes), `src/app/blog/` (was a Coming-soon stub), `src/components/nav.tsx`, `footer.tsx`.
+  The site is now exactly two routes: `/` and the 404. Production build passes; scroll effects run on
+  window (no overlay wrapper). Sections 4-10 below describe the OLD site and are historical until
+  rewritten. Known leftovers: globals.css still carries old design-system classes (mostly unused,
+  harmless), IBM Plex Mono loads via @import inside the page style tag (candidate for next/font),
+  next-themes still in package.json (unused).
 - **2026-07-14 (full reset, clean slate)** — Aaryan rejected every redesign attempt (all 8 prototypes
   AND today's two homepage rewrites). Direction: revert everything, start over from the deployed
   original, and just add the stealth role plainly. Done: `src/app/redesign/` DELETED entirely,

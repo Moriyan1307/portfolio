@@ -1,60 +1,86 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ThemeProvider } from "next-themes";
-import { Navbar } from "@/components/nav";
-import Footer from "@/components/footer";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
+const description =
+  "Founding software + product engineer in New York. Building agentic revenue systems for independent hotels, from infrastructure to the agents on top.";
+
 export const metadata: Metadata = {
-  title: "Aaryan Mori | Software Engineer & Founder",
-  description:
-    "Full-stack software engineer and founder with 5+ years of experience architecting secure, high-performance systems. Building the future, one line of code at a time.",
+  title: "Aaryan Mori | Founding Software + Product Engineer",
+  description,
   icons: {
     icon: "/logo.svg",
   },
   keywords: [
     "Aaryan Mori",
-    "Full-Stack Engineer",
-    "React Developer",
-    "Node.js Engineer",
-    "Software Developer Portfolio",
-    "Tech Founder",
-    "Freelance Developer",
-    "JavaScript Engineer",
-    "Startup Engineer",
-    "Web Developer",
-    "Open Source Contributor",
+    "Founding Engineer",
+    "Software Engineer",
+    "Product Engineer",
+    "Agentic Systems",
+    "Multi-Agent Systems",
+    "AI Engineer",
+    "Dynamic Pricing",
+    "TypeScript",
+    "Next.js",
+    "NestJS",
+    "New York",
   ],
-  authors: [{ name: "Aaryan Mori", url: "https://aaryanmori.vercel.app/" }],
+  authors: [{ name: "Aaryan Mori", url: "https://www.aaryanmori.com/" }],
   creator: "Aaryan Mori",
   publisher: "Aaryan Mori",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Aaryan Mori | Software Engineer & Founder",
-    description:
-      "Full-stack software engineer and founder with 5+ years of experience architecting secure, high-performance systems. Building the future, one line of code at a time.",
-    url: "https://aaryanmori.vercel.app/",
-    siteName: "Aaryan Mori Portfolio",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Aaryan Mori Portfolio Preview",
-      },
-    ],
+    title: "Aaryan Mori | Founding Software + Product Engineer",
+    description,
+    url: "https://www.aaryanmori.com/",
+    siteName: "Aaryan Mori",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aaryan Mori | Software Engineer & Founder",
-    description:
-      "Full-stack software engineer and founder with 5+ years of experience architecting secure, high-performance systems.",
+    title: "Aaryan Mori | Founding Software + Product Engineer",
+    description,
     creator: "@aaryanmori",
-    images: ["/og-image.png"],
   },
-  metadataBase: new URL("https://aaryanmori.vercel.app/"),
+  robots: {
+    index: true,
+    follow: true,
+  },
+  metadataBase: new URL("https://www.aaryanmori.com/"),
+};
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Aaryan Mori",
+  url: "https://www.aaryanmori.com/",
+  jobTitle: "Founding Software + Product Engineer",
+  email: "mailto:aaryanmori@gmail.com",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "New York City",
+    addressRegion: "NY",
+    addressCountry: "US",
+  },
+  sameAs: [
+    "https://github.com/Moriyan1307",
+    "https://www.linkedin.com/in/aaryan-mori-334098192/",
+  ],
+  knowsAbout: [
+    "Agentic systems",
+    "Multi-agent orchestration",
+    "Dynamic pricing",
+    "Revenue management systems",
+    "TypeScript",
+    "Next.js",
+    "NestJS",
+    "PostgreSQL",
+    "AWS",
+  ],
 };
 
 export default function RootLayout({
@@ -64,22 +90,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="antialiased bg-background text-foreground">
-        <div className="min-h-screen flex flex-col">
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <header className="pointer-events-none fixed inset-x-0 top-0 z-50">
-              <div className="page-shell pt-6">
-                <Navbar />
-              </div>
-            </header>
-            <main className="flex-1 pt-32">{children}</main>
-            <div className="mt-16">
-              <Footer />
-            </div>
-            <Analytics />
-            <SpeedInsights />
-          </ThemeProvider>
-        </div>
+      <body className="antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
+        <main>{children}</main>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
