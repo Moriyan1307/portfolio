@@ -7,7 +7,7 @@ import { taglines } from "./taglines/taglines";
 const INTRO_MS = 1000;
 const INTRO_SEEN_KEY = "aa-intro-seen";
 // DEBUG: true = intro plays on every reload (for tuning). Set false before deploy.
-const INTRO_EVERY_LOAD = true;
+const INTRO_EVERY_LOAD = false;
 
 /* public/logo.svg inlined with fill=currentColor so it follows the palette */
 function LogoMark({ className }: { className?: string }) {
