@@ -703,9 +703,6 @@ export default function Page() {
           width: 34px;
           height: auto;
           display: block;
-          /* optical centering: the slanted letterforms carry more ink on the
-             left, so the geometric center reads as sitting left of true */
-          margin-left: 15px;
         }
         @keyframes qdIntroMark {
           0% { transform: scale(10); opacity: 0; }
@@ -713,21 +710,22 @@ export default function Page() {
           100% { transform: scale(1); opacity: 1; }
         }
         .qd-intro-loading {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
+          position: relative;
           width: 180px;
           font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
           font-size: 0.72rem;
           letter-spacing: 0.1em;
         }
         .qd-intro-pct {
+          position: absolute;
+          right: calc(100% + 1rem);
+          top: 50%;
+          transform: translateY(-50%);
           color: var(--qd-bright);
-          min-width: 4ch;
-          text-align: left;
         }
         .qd-intro-bar {
-          flex: 1;
+          display: block;
+          width: 100%;
           height: 1px;
           background: var(--qd-line-strong);
         }
